@@ -1,0 +1,46 @@
+subscription_id = "00000000-0000-0000-0000-000000000000"
+project_name = "avd"
+environment  = "dev"
+location     = "eastus"
+
+vnet_address_space            = ["10.20.0.0/16"]
+session_host_subnet_prefixes  = ["10.20.1.0/24"]
+
+session_host_count   = 2
+session_host_vm_size = "Standard_D4s_v5"
+
+# Current Microsoft image naming is documented here:
+# https://learn.microsoft.com/en-us/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment
+windows_image_publisher = "MicrosoftWindowsDesktop"
+windows_image_offer     = "office-365"
+windows_image_sku       = "win11-24h2-avd-m365"
+# Set an exact version available in your region. Do not use "latest".
+windows_image_version   = "26100.8875.260714"
+
+admin_username = "avdadmin"
+admin_password = "<GENERATE-A-STRONG-PASSWORD-AND-PASS-SECURELY>"
+
+# Existing Microsoft Entra security group used for AVD users.
+avd_user_group_object_id = "00000000-0000-0000-0000-000000000000"
+
+# Tenant-specific object ID of the Azure Virtual Desktop enterprise application.
+# Find it with:
+# az ad sp show --id 9cdead84-a844-4324-93f2-b2e6bb768d07 --query id --output tsv
+avd_service_principal_object_id = "00000000-0000-0000-0000-000000000000"
+
+host_pool_type            = "Pooled"
+load_balancer_type        = "BreadthFirst"
+maximum_sessions_allowed  = 10
+start_vm_on_connect       = true
+
+# Native AVD power-management schedule. Defaults already define:
+# Monday-Friday: 07:00 ramp-up, 09:00 peak, 18:00 ramp-down, 22:00 off-peak.
+# Saturday-Sunday: 09:00 ramp-up, 10:00 peak, 14:00 ramp-down, 18:00 off-peak.
+# Copy autoscale_schedules from variables.tf only when you want to change it.
+autoscale_time_zone = "Central Standard Time"
+
+# Must be globally unique, lowercase, and 3-24 chars.
+storage_account_name = "avddevprofiles00001"
+storage_replication_type = "ZRS"
+fslogix_share_name = "profiles"
+fslogix_share_quota_gb = 1024
