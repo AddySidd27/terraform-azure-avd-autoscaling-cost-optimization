@@ -1,0 +1,26 @@
+# Terraform local state, plans and working files
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+*.tfplan
+tfplan
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# Variable files hold secrets such as the VM admin password.
+# Keep the example file only.
+*.tfvars
+*.tfvars.json
+!terraform.tfvars.example
+
+# Editors and operating system
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
