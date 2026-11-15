@@ -12,6 +12,8 @@ It is intended for proof-of-concept work, self-learning, demonstrations, and tes
 
 [Open the editable Draw.io diagram](diagrams/avd-autoscale-architecture.drawio)
 
+A step-by-step walkthrough of this lab is on the blog: [AVD Autoscale Lab with Terraform](https://adnanasiddiqui.com/terraform-labs/avd-autoscale-cost-lab/).
+
 ## What this lab demonstrates
 
 - Native AVD power-management autoscale for a pooled host pool.
